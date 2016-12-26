@@ -89,7 +89,7 @@ public class Login extends JFrame {
 				String password = passwordField.getText();
 				String username = textField.getText();
 
-				if (password.equals("1234") && username.equals("candy")) {
+				if (password.equals("shop") && username.equals("candy")) {
 					textField.setText(null);
 					passwordField.setText(null);
 					Pastry info = new Pastry();
