@@ -56,7 +56,7 @@ public class CakesUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CakesUI() {
+	private void Initializare(){
 		this.inventory = new Inventory();
         this.inventory.load();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,7 +127,7 @@ public class CakesUI extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Denumire", "Gramaj", "Pret"
+				"Denumire", "Cantitate Disponibila(kg)", "Pret(lei/kg)"
 			}
 		));
 		
@@ -149,15 +149,18 @@ public class CakesUI extends JFrame {
 		panel_3.setLayout(null);
 		
 		JLabel lblDenumire = new JLabel("Denumire");
-		lblDenumire.setBounds(87, 44, 46, 14);
+		lblDenumire.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblDenumire.setBounds(71, 44, 86, 14);
 		panel_3.add(lblDenumire);
 		
-		JLabel lblGramaj = new JLabel("Gramaj");
-		lblGramaj.setBounds(87, 106, 46, 14);
+		JLabel lblGramaj = new JLabel("Cantitate Disponibila(kg)");
+		lblGramaj.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblGramaj.setBounds(34, 106, 143, 14);
 		panel_3.add(lblGramaj);
 		
-		JLabel lblPret = new JLabel("Pret");
-		lblPret.setBounds(87, 146, 46, 14);
+		JLabel lblPret = new JLabel("Pret(lei/kg)");
+		lblPret.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblPret.setBounds(71, 146, 86, 14);
 		panel_3.add(lblPret);
 		
 		textField = new JTextField();
@@ -178,19 +181,29 @@ public class CakesUI extends JFrame {
 		JButton btnNewButton_2 = new JButton("OK");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String den=textField.getText();
-				String gr=textField_1.getText();
-				String pret=textField_2.getText();
+				String name=textField.getText();
+				String grammage=textField_1.getText();
+				String price=textField_2.getText();
 				Vector<String> newCake = new Vector<String>();
-				newCake.add(den);
-				newCake.add(gr);
-				newCake.add(pret);
+				newCake.add(name);
+				newCake.add(grammage);
+				newCake.add(price);
 				addCake(newCake);
+				textField.setText(null);
+				textField_1.setText(null);
+				textField_2.setText(null);
+				
+				
+				
 			}
 		});
 		btnNewButton_2.setBounds(341, 209, 89, 23);
 		panel_3.add(btnNewButton_2);
 		formWindowOpened();
+	}
+	
+	public CakesUI() {
+		Initializare();
 	}
 	
 	public void addCake(Vector<String> cake) {
